@@ -1,0 +1,190 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="username">Usuario</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          minlength="3"
+          maxlength="20"
+          #username="ngModel"
+        />
+        <div class="alert-danger" *ngIf="username.errors && f.submitted">
+          <div *ngIf="username.errors.required">El Usuario es un campo obligatorio</div>
+          <div *ngIf="username.errors.minlength">
+            El Usuario debe poseer 3 caracteres minimo
+          </div>
+          <div *ngIf="username.errors.maxlength">
+            Usuario debe poseer 20 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors.required">El correo es un campo obligatorio</div>
+          <div *ngIf="email.errors.email">
+            El correo debe poseer un formato valido
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="8"
+          #password="ngModel"
+        />
+        <div class="alert-danger" *ngIf="password.errors && f.submitted">
+          <div *ngIf="password.errors.required">La Contraseña es un campo obligatorio </div>
+          <div *ngIf="password.errors.minlength">
+            La Contraseña debe poseer al menos 8 caracteres
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fullname">Nombre Completo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="fullname"
+          [(ngModel)]="form.fullname"
+          required
+          minlength="10"
+          maxlength="40"
+          #fullname="ngModel"
+        />
+        <div class="alert-danger" *ngIf="fullname.errors && f.submitted">
+          <div *ngIf="fullname.errors.required">Nombre Completo es un campo obligatorio</div>
+          <div *ngIf="fullname.errors.minlength">
+            Nombre Completo debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="fullname.errors.maxlength">
+            Nombre Completo debe poseer 40 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Direccion</label>
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          [(ngModel)]="form.address"
+          required
+          minlength="10"
+          maxlength="60"
+          #address="ngModel"
+        />
+        <div class="alert-danger" *ngIf="address.errors && f.submitted">
+          <div *ngIf="address.errors.required">Direccion es un campo obligatorio</div>
+          <div *ngIf="address.errors.minlength">
+            Direccion debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="address.errors.maxlength">
+            Direccion debe poseer 60 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefono</label>
+        <input
+          type="text"
+          class="form-control"
+          name="phone"
+          [(ngModel)]="form.phone"
+          required
+          minlength="10"
+          maxlength="20"
+          #phone="ngModel"
+        />
+        <div class="alert-danger" *ngIf="phone.errors && f.submitted">
+          <div *ngIf="phone.errors.required">Telefono es un campo obligatorio</div>
+          <div *ngIf="phone.errors.minlength">
+            Telefono debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="phone.errors.maxlength">
+            Telefono debe poseer 20 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="zip">Codigo Postal</label>
+        <input
+          type="text"
+          class="form-control"
+          name="zip"
+          [(ngModel)]="form.zip"
+          required
+          minlength="3"
+          maxlength="10"
+          #zip="ngModel"
+        />
+        <div class="alert-danger" *ngIf="zip.errors && f.submitted">
+          <div *ngIf="zip.errors.required">Codigo Postal es un campo obligatorio</div>
+          <div *ngIf="zip.errors.minlength">
+            Codigo Postal debe poseer 3 caracteres minimo
+          </div>
+          <div *ngIf="zip.errors.maxlength">
+            Codigo Postal debe poseer 10 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="aboutme">Carta de presentacion</label>
+        <textarea
+          class="form-control"
+          name="aboutme"
+          [(ngModel)]="form.aboutme"
+          required
+          minlength="10"
+          maxlength="500"
+          #aboutme="ngModel"
+        ></textarea>
+        <div class="alert-danger" *ngIf="aboutme.errors && f.submitted">
+          <div *ngIf="aboutme.errors.required">Carta de presentacion es un campo obligatorio</div>
+          <div *ngIf="aboutme.errors.minlength">
+            Carta de presentacion debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="aboutme.errors.maxlength">
+            Carta de presentacion debe poseer 500 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Registrar usuario</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Ocurrio un error registrando usuario<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      El proceso de registro de usuario se realizo de forma correcta
+    </div>
+  </div>
+</div>
