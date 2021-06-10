@@ -14,6 +14,7 @@ import { authInterceptorProviders } from './utils/auth.interceptor';
 import { AddEmploymentComponent } from './components/add-employment/add-employment.component';
 import { EmploymentDetailsComponent } from './components/employment-details/employment-details.component';
 import { EmploymentListComponent } from './components/employment-list/employment-list.component';
+import { PhotoComponent } from './components/photo/photo.component';
 
 
 
@@ -26,7 +27,8 @@ import { EmploymentListComponent } from './components/employment-list/employment
     HomeComponent,
     AddEmploymentComponent,
     EmploymentDetailsComponent,
-    EmploymentListComponent
+    EmploymentListComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,

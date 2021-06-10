@@ -9,12 +9,15 @@ import { AddEmploymentComponent } from './components/add-employment/add-employme
 import { EmploymentDetailsComponent } from './components/employment-details/employment-details.component';
 import { EmploymentListComponent } from './components/employment-list/employment-list.component';
 
+import { PhotoComponent } from './components/photo/photo.component';
+
 import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   { path: 'employment', component: EmploymentListComponent, canActivate: [AuthGuard] },
   { path: 'employment/:id', component: EmploymentDetailsComponent, canActivate: [AuthGuard] },
   { path: 'createEmployment', component: AddEmploymentComponent, canActivate: [AuthGuard] },
+  { path: 'photo', component: PhotoComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
