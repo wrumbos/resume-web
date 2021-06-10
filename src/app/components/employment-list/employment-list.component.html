@@ -1,0 +1,45 @@
+<br>
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Lista de Empleos</h4>
+    <button class="btn btn-primary btn-block" routerLink="../createEmployment">Nuevo Empleo</button>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let employment of employments; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveEmployments(employment, i)"
+      >
+        {{ employment.jobTitle }} - {{ employment.companyName }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentEmployment.id">
+      <h4>Empleo</h4>
+      <div>
+        <label><strong>Empresa:</strong></label> {{ currentEmployment.companyName }}
+      </div>
+      <div>
+        <label><strong>Cargo:</strong></label>
+        {{ currentEmployment.jobTitle }}
+      </div>
+      <div>
+        <label><strong>Descripcion de cargo:</strong></label>
+        {{ currentEmployment.jobDescription }}
+      </div>
+      <div>
+        <label><strong>Fecha inicio - Fecha fin</strong></label>
+        {{ currentEmployment.startDate }} - {{ currentEmployment.endDate == null ? 'Presente' : currentEmployment.endDate }}
+      </div>
+      <a class="badge badge-warning" routerLink="{{ currentEmployment.id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentEmployment">
+      <br />
+      <p>Selecione un Empleo</p>
+    </div>
+  </div>
+</div>

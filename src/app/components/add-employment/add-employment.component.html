@@ -1,0 +1,113 @@
+ <div class="card card-container">
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="companyName">Empresa</label>
+        <input
+          type="text"
+          class="form-control"
+          name="companyName"
+          [(ngModel)]="form.companyName"
+          required
+          minlength="3"
+          maxlength="50"
+          #companyName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="companyName.errors && f.submitted">
+          <div *ngIf="companyName.errors.required">Empresa es un campo obligatorio</div>
+          <div *ngIf="companyName.errors.minlength">
+            Empresa debe poseer 3 caracteres minimo
+          </div>
+          <div *ngIf="companyName.errors.maxlength">
+            Empresa debe poseer 50 caracteres maximo
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="jobTitle">Cargo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="jobTitle"
+          [(ngModel)]="form.jobTitle"
+          required
+          minlength="3"
+          maxlength="50"
+          #jobTitle="ngModel"
+        />
+        <div class="alert-danger" *ngIf="jobTitle.errors && f.submitted">
+          <div *ngIf="jobTitle.errors.required">Empresa es un campo obligatorio</div>
+          <div *ngIf="jobTitle.errors.minlength">
+            Empresa debe poseer 3 caracteres minimo
+          </div>
+          <div *ngIf="jobTitle.errors.maxlength">
+            Empresa debe poseer 50 caracteres maximo
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="startDate">Fecha de Inicio</label>
+        <input
+          type="date"
+          class="form-control"
+          name="startDate"
+          [(ngModel)]="form.startDate"
+          required
+          #startdate [value]="form.startDate | date:'yyyy-MM-dd'"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">Fecha de Fin</label>
+        <input
+          type="date"
+          class="form-control"
+          name="endDate"
+          [(ngModel)]="form.endDate"
+          #startdate [value]="form.endDate | date:'yyyy-MM-dd'"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="jobDescription">Descripcion del cargo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="jobDescription"
+          [(ngModel)]="form.jobDescription"
+          required
+          minlength="10"
+          maxlength="100"
+          #jobDescription="ngModel"
+        />
+        <div class="alert-danger" *ngIf="jobDescription.errors && f.submitted">
+          <div *ngIf="jobDescription.errors.required">Descripcion del cargo es un campo obligatorio</div>
+          <div *ngIf="jobDescription.errors.minlength">
+            Descripcion del cargo debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="jobDescription.errors.maxlength">
+            Descripcion del cargo debe poseer 100 caracteres maximo
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Registrar Empleo</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Ocurrio un error registrando Empleo<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isSuccessful">
+      El proceso de registro de Empleo se realizo de forma correcta
+    </div>
+  </div>
