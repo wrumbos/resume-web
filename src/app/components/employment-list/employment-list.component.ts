@@ -33,11 +33,6 @@ export class EmploymentListComponent implements OnInit {
           console.log(error);
         });
   }
-  refreshList(): void {
-    this.retrieveEmployments();
-    this.currentEmployment = {};
-    this.currentIndex = -1;
-  }
   setActiveEmployments(tutorial: Employment, index: number): void {
     this.currentEmployment = tutorial;
     this.currentIndex = index;

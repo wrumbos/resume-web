@@ -1,0 +1,123 @@
+<div>
+  <br>
+  <div *ngIf="form.id" class="edit-form">
+    <h4>Educacion</h4>
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && updateEducation()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="institutionName">Nombre de la institución</label>
+        <input
+          type="text"
+          class="form-control"
+          name="institutionName"
+          [(ngModel)]="form.institutionName"
+          required
+          minlength="3"
+          maxlength="60"
+          #institutionName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="institutionName.errors && f.submitted">
+          <div *ngIf="institutionName.errors.required">Nombre de la institución es un campo obligatorio</div>
+          <div *ngIf="institutionName.errors.minlength">
+            Nombre de la institución debe poseer 3 caracteres minimo
+          </div>
+          <div *ngIf="institutionName.errors.maxlength">
+            Nombre de la institución debe poseer 60 caracteres maximo
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tittle">Titulo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="tittle"
+          [(ngModel)]="form.tittle"
+          required
+          minlength="10"
+          maxlength="60"
+          #tittle="ngModel"
+        />
+        <div class="alert-danger" *ngIf="tittle.errors && f.submitted">
+          <div *ngIf="tittle.errors.required">Titulo es un campo obligatorio</div>
+          <div *ngIf="tittle.errors.minlength">
+            Titulo debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="tittle.errors.tittle">
+            Titulo debe poseer 60 caracteres maximo
+          </div>
+        </div>
+      </div>
+
+      <select class="form-control"
+              name="typeEducation"
+              [(ngModel)]="form.typeEducation"
+              required>
+        <option [ngValue]="null" disabled>Tipo de educacion</option>
+        <option *ngFor="let typeEducation of list" [ngValue]="typeEducation.id">{{typeEducation.name}}</option>
+      </select>
+
+      <div class="form-group">
+        <label for="startDate">Fecha de Inicio</label>
+        <input
+          type="date"
+          class="form-control"
+          name="startDate"
+          [(ngModel)]="form.startDate"
+          required
+          #startdate [value]="form.startDate | date:'yyyy-MM-dd'"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="endDate">Fecha de Fin</label>
+        <input
+          type="date"
+          class="form-control"
+          name="endDate"
+          [(ngModel)]="form.endDate"
+          #startdate [value]="form.endDate | date:'yyyy-MM-dd'"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="educationDescription">Descripcion del estudio</label>
+        <input
+          type="text"
+          class="form-control"
+          name="educationDescription"
+          [(ngModel)]="form.educationDescription"
+          required
+          minlength="10"
+          maxlength="100"
+          #educationDescription="ngModel"
+        />
+        <div class="alert-danger" *ngIf="educationDescription.errors && f.submitted">
+          <div *ngIf="educationDescription.errors.required">Descripcion del cargo es un campo obligatorio</div>
+          <div *ngIf="educationDescription.errors.minlength">
+            Descripcion del cargo debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="educationDescription.errors.maxlength">
+            Descripcion del cargo debe poseer 100 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="badge badge-success mb-2">Actualizar</button>
+      <p>{{ message }}</p>
+    </form>
+    <button class="badge badge-danger mr-2" (click)="deleteEducation()">Eliminar</button>
+
+
+  </div>
+
+  <div *ngIf="!form.id">
+    <br />
+    <p>Error intentando encontrar el Educacion selecionado</p>
+  </div>
+</div>

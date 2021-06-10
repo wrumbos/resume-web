@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
+import {environment} from '../../environments/environment';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Employment } from '../models/employment.model';
-import {environment} from '../../environments/environment';
+import { Education } from '../models/education.model';
 
 const baseUrl = environment.APIUrl;
-const service = '/resume/employment';
+const service = '/resume/education';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -16,15 +16,15 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class EmploymentService {
+export class EducationService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(idUser: any): Observable<Employment[]> {
-    return this.http.get<Employment[]>(`${baseUrl}${service}/getAll/${idUser}`);
+  getAll(idUser: any): Observable<Education[]> {
+    return this.http.get<Education[]>(`${baseUrl}${service}/getAll/${idUser}`, httpOptions);
   }
 
-  get(id: any): Observable<Employment> {
+  get(id: any): Observable<Education> {
     return this.http.get(`${baseUrl}${service}/${id}`);
   }
 
@@ -33,10 +33,11 @@ export class EmploymentService {
   }
 
   update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}${service}/${id}`, data);
+    return this.http.put(`${baseUrl}${service}/${id}`, data, httpOptions);
   }
 
   delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}${service}/${id}`);
+    return this.http.delete(`${baseUrl}${service}/${id}`, httpOptions);
   }
+
 }

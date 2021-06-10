@@ -26,10 +26,10 @@ export class EmploymentDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.message = '';
-    this.getTutorial(this.activeRouter.snapshot.params.id);
+    this.getEmployment(this.activeRouter.snapshot.params.id);
   }
 
-  getTutorial(id: string): void {
+  getEmployment(id: string): void {
     this.employmentService.get(id)
       .subscribe(
         data => {

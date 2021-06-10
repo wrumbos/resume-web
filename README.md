@@ -1,27 +1,49 @@
-# ResumeWeb
+# resume-web
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.3.
+web for create and management resume
 
-## Development server
+## Tópicos
+*  **[📝 Requerimientos / tecnologias](#-requerimientos)**
+*  **[🚀 Solucion](#-Solucion)**
+*  **[🗂 Estructura de Directorios](#-estructura-de-directorios)**
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 📝 Requerimientos / Tecnologias
+```
+Nodejs 14.16.0
+Angular 11.2.4
+rxjs 6.6.0
+```
+## 🚀 Solucion
 
-## Code scaffolding
+Utilizando el framework Angular bajo un servidor nodejs se construye una web dinámica para la construcción y creación 
+de un curriculum online, la aplicación se comunica con una rest api a través de services y la librería rxjs, para 
+la manipulación de la data, la aplicación web contempla los siguientes tópicos
+```
+1. Registro de usuario
+2. Login
+3. Información personal
+4. Carta de presentación
+5. Educacion
+6. Trabajo
+7. Habilidades
+8. Foto
+9. Curriculum online
+10. Curriculum online a través de un nombre de usuario
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+## 🗂 Estructura de Directorios
+```
+📦 resume-api 
+│
+│  
+└─📁 src                  Código fuente
+│ │
+│ └─📁 app               componentes, módulos, servicios, utils
+│ │
+│ └─📁 assets            archivos
+│ │       
+│ └─📁 environments      Configuracion de ambientes
+│
+└─📄 README.md            Documentacion del software
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

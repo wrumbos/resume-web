@@ -1,0 +1,97 @@
+<br>
+<div *ngIf="hasBoolean">
+
+  <div class="list row">
+    <div  class="col-md-6">
+      <h1>Curriculum vitae</h1>
+    </div>
+  </div>
+
+  <div class="list row">
+    <div  class="col-md-6">
+      <img [src]="imageBlobUrl" width="200" height="200">
+    </div>
+    <div  class="col-md-6">
+      <h3>Informacion Personal</h3>
+      <div>
+        <label><strong>Nombre Completo:</strong></label> {{ resume.fullname }}<br>
+        <label><strong>Direccion:</strong></label> {{ resume.address }}<br>
+        <label><strong>Codigo Postal:</strong></label> {{ resume.zip }}<br>
+        <label><strong>Telefono:</strong></label> {{ resume.phone }}<br>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="list row">
+    <div  class="col-md-12">
+      <h4>Carta de presentación:</h4>
+      <ul class="list-group">
+        <li class="list-group-item" >
+          <label><strong>{{ resume.aboutMe }}</strong></label><br>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br>
+  <div class="list row">
+    <div  class="col-md-12">
+      <h4>Experiencia</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let employment of employments; let i = index"
+        >
+          <label><strong>Cargo: </strong>{{ employment.jobTitle }}</label><br>
+          <label><strong>Empresa: </strong>{{ employment.companyName }}</label><br>
+          <label><strong>Duracion: </strong>{{ employment.startDate }} - {{ employment.endDate }}</label><br>
+          <label><strong>Descripcion de cargo: </strong>{{ employment.jobDescription }}</label><br>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br>
+  <div class="list row">
+    <div  class="col-md-12">
+      <h4>Educación</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let education of educations; let i = index"
+        >
+          <label><strong>Institución: </strong>{{ education.institutionName }}</label><br>
+          <label><strong>Título: </strong>{{getTypeEducation(education.typeEducation)}} - {{ education.tittle }}</label><br>
+          <label><strong>Duracion: </strong>{{ education.startDate }} - {{ education.endDate }}</label><br>
+          <label><strong>Descripcion: </strong>{{ education.educationDescription }}</label><br>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br>
+  <div class="list row">
+    <div  class="col-md-12">
+      <h4>Habilidades</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let skill of skills; let i = index"
+        >
+          <label><strong>Habilidad: </strong>{{ skill.name }}</label><br>
+          <label><strong>Auto evaluacion: </strong>
+            <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+                 attr.aria-valuenow="{{ skill.selfAppraisal }}" aria-valuemin="1"  aria-valuemax="10"
+                 [ngStyle]="{ width: skill.selfAppraisal * 10 + '%' }"> {{ skill.selfAppraisal * 10 }}% </div>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<div *ngIf="!hasBoolean">
+  <br />
+  <p>No se encontro el Curriculum vitae selecionado</p>
+</div>

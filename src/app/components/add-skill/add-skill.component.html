@@ -1,0 +1,66 @@
+<div class="card card-container">
+  <form
+    *ngIf="!isSuccessful"
+    name="form"
+    (ngSubmit)="f.form.valid && onSubmit()"
+    #f="ngForm"
+    novalidate
+  >
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        [(ngModel)]="form.name"
+        required
+        minlength="3"
+        maxlength="30"
+        #name="ngModel"
+      />
+      <div class="alert-danger" *ngIf="name.errors && f.submitted">
+        <div *ngIf="name.errors.required">Nombre es un campo obligatorio</div>
+        <div *ngIf="name.errors.minlength">
+          Nombre debe poseer 3 caracteres minimo
+        </div>
+        <div *ngIf="name.errors.maxlength">
+          Nombre debe poseer 30 caracteres maximo
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="selfAppraisal">Autoevaluacion del 1 al 10</label>
+      <input
+        type="number"
+        class="form-control"
+        name="selfAppraisal"
+        [(ngModel)]="form.selfAppraisal"
+        required
+        min="1" max="10"
+        #selfAppraisal="ngModel"
+      />
+      <div class="alert-danger" *ngIf="selfAppraisal.errors && f.submitted">
+        <div *ngIf="selfAppraisal.errors.required">Autoevaluacion es un campo obligatorio</div>
+        <div *ngIf="selfAppraisal.errors.min">
+          Autoevaluacion debe ser 1 minimo
+        </div>
+        <div *ngIf="selfAppraisal.errors.tittle">
+          Autoevaluacion debe ser 10 minimo
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="btn btn-primary btn-block">Registrar Habilidad</button>
+    </div>
+
+    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+      Ocurrio un error registrando Habilidad<br />{{ errorMessage }}
+    </div>
+  </form>
+
+  <div class="alert alert-success" *ngIf="isSuccessful">
+    El proceso de registro de Habilidad se realizo de forma correcta
+  </div>
+</div>

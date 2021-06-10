@@ -42,12 +42,12 @@
           #jobTitle="ngModel"
         />
         <div class="alert-danger" *ngIf="jobTitle.errors && f.submitted">
-          <div *ngIf="jobTitle.errors.required">Empresa es un campo obligatorio</div>
+          <div *ngIf="jobTitle.errors.required">Cargo es un campo obligatorio</div>
           <div *ngIf="jobTitle.errors.minlength">
-            Empresa debe poseer 3 caracteres minimo
+            Cargo debe poseer 3 caracteres minimo
           </div>
           <div *ngIf="jobTitle.errors.maxlength">
-            Empresa debe poseer 50 caracteres maximo
+            Cargo debe poseer 50 caracteres maximo
           </div>
         </div>
       </div>

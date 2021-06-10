@@ -16,6 +16,13 @@ import { EmploymentDetailsComponent } from './components/employment-details/empl
 import { EmploymentListComponent } from './components/employment-list/employment-list.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { ResumeDetailsComponent } from './components/resume-details/resume-details.component';
+import { AddEducationComponent } from './components/add-education/add-education.component';
+import { EducationDetailsComponent } from './components/education-details/education-details.component';
+import { EducationListComponent } from './components/education-list/education-list.component';
+import { AddSkillComponent } from './components/add-skill/add-skill.component';
+import { SkillDetailsComponent } from './components/skill-details/skill-details.component';
+import { SkillListComponent } from './components/skill-list/skill-list.component';
+import { ResumeConsolidateComponent } from './components/resume-consolidate/resume-consolidate.component';
 
 
 @NgModule({
@@ -28,7 +35,14 @@ import { ResumeDetailsComponent } from './components/resume-details/resume-detai
     EmploymentDetailsComponent,
     EmploymentListComponent,
     PhotoComponent,
-    ResumeDetailsComponent
+    ResumeDetailsComponent,
+    AddEducationComponent,
+    EducationDetailsComponent,
+    EducationListComponent,
+    AddSkillComponent,
+    SkillDetailsComponent,
+    SkillListComponent,
+    ResumeConsolidateComponent
   ],
   imports: [
     BrowserModule,

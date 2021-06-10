@@ -1,0 +1,68 @@
+<div>
+  <br>
+  <div *ngIf="form.id" class="edit-form">
+    <h4>Habilidad</h4>
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && updateSkill()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.name"
+          required
+          minlength="3"
+          maxlength="30"
+          #name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="name.errors && f.submitted">
+          <div *ngIf="name.errors.required">Nombre es un campo obligatorio</div>
+          <div *ngIf="name.errors.minlength">
+            Nombre debe poseer 3 caracteres minimo
+          </div>
+          <div *ngIf="name.errors.maxlength">
+            Nombre debe poseer 30 caracteres maximo
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="selfAppraisal">Autoevaluacion del 1 al 10</label>
+        <input
+          type="number"
+          class="form-control"
+          name="selfAppraisal"
+          [(ngModel)]="form.selfAppraisal"
+          required
+          min="1" max="10"
+          #selfAppraisal="ngModel"
+        />
+        <div class="alert-danger" *ngIf="selfAppraisal.errors && f.submitted">
+          <div *ngIf="selfAppraisal.errors.required">Autoevaluacion es un campo obligatorio</div>
+          <div *ngIf="selfAppraisal.errors.min">
+            Autoevaluacion debe ser 1 minimo
+          </div>
+          <div *ngIf="selfAppraisal.errors.tittle">
+            Autoevaluacion debe ser 10 minimo
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="badge badge-success mb-2">Actualizar</button>
+      <p>{{ message }}</p>
+    </form>
+    <button class="badge badge-danger mr-2" (click)="deleteSkill()">Eliminar</button>
+
+
+  </div>
+
+  <div *ngIf="!form.id">
+    <br />
+    <p>Error intentando encontrar la habilidad selecionada</p>
+  </div>
+</div>

@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../environments/environment';
 
-const baseUrl = 'http://localhost:8080/api/v1/resume/photo';
+
+const baseUrl = environment.APIUrl;
+const service = '/resume/photo';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class PhotoService {
 
     formData.append('photo', file);
 
-    const req = new HttpRequest('POST', `${baseUrl}/${idUser}`, formData, {
+    const req = new HttpRequest('POST', `${baseUrl}${service}/${idUser}`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -29,7 +32,7 @@ export class PhotoService {
 
     formData.append('photo', file);
 
-    const req = new HttpRequest('PUT', `${baseUrl}/${idUser}`, formData, {
+    const req = new HttpRequest('PUT', `${baseUrl}${service}/${idUser}`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -38,6 +41,6 @@ export class PhotoService {
   }
 
   get(idUser: any): Observable<any> {
-    return this.http.get(`${baseUrl}/getByUser/${idUser}`);
+    return this.http.get(`${baseUrl}${service}/getByUser/${idUser}`);
   }
 }

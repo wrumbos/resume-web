@@ -1,0 +1,44 @@
+<br>
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Lista de Habilidades</h4>
+    <button class="btn btn-primary btn-block" routerLink="../createSkill">Nueva Habilidad</button>
+    <br>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let skill of skills; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveSkill(skill, i)"
+      >
+        {{ skill.name }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentSkill.id">
+      <h4>Habilidad</h4>
+      <div>
+        <label><strong>Nombre:</strong></label> {{ currentSkill.name }}
+      </div>
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped"
+        role="progressbar"
+        attr.aria-valuenow="{{ currentSkill.selfAppraisal }}"
+        aria-valuemin="1"
+        aria-valuemax="10"
+        [ngStyle]="{ width: currentSkill.selfAppraisal * 10 + '%' }"
+      >
+        {{ currentSkill.selfAppraisal * 10 }}%
+      </div>
+      <a class="badge badge-warning" routerLink="{{ currentSkill.id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentSkill">
+      <br />
+      <p>Selecione una Habilidad</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<br>
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Lista de Estudios</h4>
+    <button class="btn btn-primary btn-block" routerLink="../createEducation">Nuevo Estudio</button>
+    <br>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let education of educations; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveEducations(education, i)"
+      >
+        {{ education.institutionName }} - {{ education.tittle }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentEducation.id">
+      <h4>Estudio</h4>
+      <div>
+        <label><strong>Institución:</strong></label> {{ currentEducation.institutionName }}
+      </div>
+      <div>
+        <label><strong>Titulo:</strong></label>
+        {{ getTypeEducation(currentEducation.typeEducation) }} - {{ currentEducation.tittle }}
+      </div>
+      <div>
+        <label><strong>Descripcion de cargo:</strong></label>
+        {{ currentEducation.educationDescription }}
+      </div>
+      <div>
+        <label><strong>Fecha inicio - Fecha fin: </strong></label>
+        {{ currentEducation.startDate }} - {{ currentEducation.endDate == null ? 'Presente' : currentEducation.endDate }}
+      </div>
+      <a class="badge badge-warning" routerLink="{{ currentEducation.id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentEducation">
+      <br />
+      <p>Selecione un Estudio</p>
+    </div>
+  </div>
+</div>
