@@ -1,6 +1,6 @@
 <br>
-<div class="col-md-6">
-  <h2>Foto</h2>
+<h2>Foto</h2>
+<div *ngIf="hasBoolean" class="col-md-6">
   <img [src]="imageBlobUrl" width="200" height="200">
 </div>
 <br>
@@ -10,7 +10,7 @@
       <input type="file" (change)="selectFile($event)" />
     </label>
   </div>
-  <div *ngIf="hasBoolean" class="col-4" >
+  <div class="col-4" >
     <button *ngIf="!hasBoolean" class="btn btn-success btn-sm" [disabled]="!selectedFiles" (click)="upload()">
       Subir Foto
     </button>

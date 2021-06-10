@@ -8,8 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AddEmploymentComponent } from './components/add-employment/add-employment.component';
 import { EmploymentDetailsComponent } from './components/employment-details/employment-details.component';
 import { EmploymentListComponent } from './components/employment-list/employment-list.component';
-
 import { PhotoComponent } from './components/photo/photo.component';
+import { ResumeDetailsComponent } from './components/resume-details/resume-details.component';
 
 import { AuthGuard } from './auth.guard';
 
@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'employment/:id', component: EmploymentDetailsComponent, canActivate: [AuthGuard] },
   { path: 'createEmployment', component: AddEmploymentComponent, canActivate: [AuthGuard] },
   { path: 'photo', component: PhotoComponent, canActivate: [AuthGuard] },
+  { path: 'personal', component: ResumeDetailsComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

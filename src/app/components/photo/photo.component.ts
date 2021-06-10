@@ -28,6 +28,7 @@ export class PhotoComponent implements OnInit {
         this.photo(data.data, data.type);
       }, err => {
         console.log(err);
+        this.hasBoolean = false;
       }
     );
   }
@@ -126,8 +127,7 @@ export class PhotoComponent implements OnInit {
   photo(data: any, type: any): void{
     const blob = base64StringToBlob(data, type);
     this.imageBlobUrl = this.sanitizer.bypassSecurityTrustUrl(window.URL.createObjectURL(blob));
-    this.hasBoolean = this.imageBlobUrl.length > 3 ? true : false;
-    this.hasBoolean = blob.size > 1 ? true : false;
+    this.hasBoolean = blob.size > 1;
   }
 
 }

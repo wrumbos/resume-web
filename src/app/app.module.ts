@@ -15,8 +15,7 @@ import { AddEmploymentComponent } from './components/add-employment/add-employme
 import { EmploymentDetailsComponent } from './components/employment-details/employment-details.component';
 import { EmploymentListComponent } from './components/employment-list/employment-list.component';
 import { PhotoComponent } from './components/photo/photo.component';
-
-
+import { ResumeDetailsComponent } from './components/resume-details/resume-details.component';
 
 
 @NgModule({
@@ -28,7 +27,8 @@ import { PhotoComponent } from './components/photo/photo.component';
     AddEmploymentComponent,
     EmploymentDetailsComponent,
     EmploymentListComponent,
-    PhotoComponent
+    PhotoComponent,
+    ResumeDetailsComponent
   ],
   imports: [
     BrowserModule,

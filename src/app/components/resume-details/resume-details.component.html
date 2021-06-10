@@ -1,0 +1,132 @@
+<div>
+  <br>
+  <div *ngIf="form.id" class="edit-form">
+    <h4>Empleo</h4>
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && updateResume()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="fullname">Nombre Completo</label>
+        <input
+          type="text"
+          class="form-control"
+          name="fullname"
+          [(ngModel)]="form.fullname"
+          required
+          minlength="10"
+          maxlength="40"
+          #fullname="ngModel"
+        />
+        <div class="alert-danger" *ngIf="fullname.errors && f.submitted">
+          <div *ngIf="fullname.errors.required">Nombre Completo es un campo obligatorio</div>
+          <div *ngIf="fullname.errors.minlength">
+            Nombre Completo debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="fullname.errors.maxlength">
+            Nombre Completo debe poseer 40 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Direccion</label>
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          [(ngModel)]="form.address"
+          required
+          minlength="10"
+          maxlength="60"
+          #address="ngModel"
+        />
+        <div class="alert-danger" *ngIf="address.errors && f.submitted">
+          <div *ngIf="address.errors.required">Direccion es un campo obligatorio</div>
+          <div *ngIf="address.errors.minlength">
+            Direccion debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="address.errors.maxlength">
+            Direccion debe poseer 60 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefono</label>
+        <input
+          type="text"
+          class="form-control"
+          name="phone"
+          [(ngModel)]="form.phone"
+          required
+          minlength="10"
+          maxlength="20"
+          #phone="ngModel"
+        />
+        <div class="alert-danger" *ngIf="phone.errors && f.submitted">
+          <div *ngIf="phone.errors.required">Telefono es un campo obligatorio</div>
+          <div *ngIf="phone.errors.minlength">
+            Telefono debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="phone.errors.maxlength">
+            Telefono debe poseer 20 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="zip">Codigo Postal</label>
+        <input
+          type="text"
+          class="form-control"
+          name="zip"
+          [(ngModel)]="form.zip"
+          required
+          minlength="3"
+          maxlength="10"
+          #zip="ngModel"
+        />
+        <div class="alert-danger" *ngIf="zip.errors && f.submitted">
+          <div *ngIf="zip.errors.required">Codigo Postal es un campo obligatorio</div>
+          <div *ngIf="zip.errors.minlength">
+            Codigo Postal debe poseer 3 caracteres minimo
+          </div>
+          <div *ngIf="zip.errors.maxlength">
+            Codigo Postal debe poseer 10 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="aboutMe">Carta de presentacion</label>
+        <textarea
+          class="form-control"
+          name="aboutme"
+          [(ngModel)]="form.aboutMe"
+          required
+          minlength="10"
+          maxlength="500"
+          #aboutme="ngModel"
+        ></textarea>
+        <div class="alert-danger" *ngIf="aboutme.errors && f.submitted">
+          <div *ngIf="aboutme.errors.required">Carta de presentacion es un campo obligatorio</div>
+          <div *ngIf="aboutme.errors.minlength">
+            Carta de presentacion debe poseer 10 caracteres minimo
+          </div>
+          <div *ngIf="aboutme.errors.maxlength">
+            Carta de presentacion debe poseer 500 caracteres maximo
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="badge badge-success mb-2">Actualizar</button>
+      <p>{{ message }}</p>
+    </form>
+
+
+  </div>
+
+  <div *ngIf="!form.id">
+    <br />
+    <p>Error intentando encontrar Informacion personal</p>
+  </div>
+</div>
