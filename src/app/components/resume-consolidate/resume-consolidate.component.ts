@@ -41,13 +41,13 @@ export class ResumeConsolidateComponent implements OnInit {
     this.resumeService.consolidate(userName)
       .subscribe(
         data => {
+          this.hasBoolean = true;
           this.resume = data.resume;
           this.educations = data.education;
           this.employments = data.employment;
           this.skills = data.skill;
           this.photo(data.photo.data, data.photo.type);
-          this.hasBoolean = true;
-        },
+          },
         error => {
           console.log(error);
         });
